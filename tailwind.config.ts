@@ -39,9 +39,11 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        gold: {
-          DEFAULT: "#f8b750",
-          dark: "#f59e0b",
+        brand: {
+          blue: "#0052CC",
+          "blue-light": "#1E66FF",
+          red: "#C41E3A",
+          "red-light": "#E63946",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
