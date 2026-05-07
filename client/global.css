@@ -124,6 +124,49 @@
   }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 82, 204, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 82, 204, 0.6); }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @layer components {
   .btn-primary {
     @apply px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-blue-700 hover:shadow-lg active:scale-95;
@@ -151,49 +194,6 @@
 
   .feature-card {
     @apply bg-white rounded-xl p-8 border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:border-blue-200 hover:-translate-y-2;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-
-  @keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 82, 204, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(0, 82, 204, 0.6); }
-  }
-
-  @keyframes slide-up {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slide-in-left {
-    0% {
-      opacity: 0;
-      transform: translateX(-40px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slide-in-right {
-    0% {
-      opacity: 0;
-      transform: translateX(40px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
   }
 
   .animate-float {
