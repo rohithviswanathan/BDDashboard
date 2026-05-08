@@ -10,6 +10,8 @@ export default function ContactSection() {
     message: "",
   });
 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -17,14 +19,34 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!formData.company.trim()) newErrors.company = "Company name is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    return newErrors;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    alert("✅ Your demo request has been sent!");
     setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+    setErrors({});
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 content-wrapper">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
         <div className="space-y-8 animate-slide-in-left">
           <div>
@@ -70,53 +92,53 @@ export default function ContactSection() {
           </div>
         </div>
 
+        {/* Right side form */}
         <div className="animate-slide-in-right">
           <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-10 border border-gray-200 shadow-xl">
             <h3 className="text-3xl font-bold mb-8 text-gray-900">
               Schedule a Demo
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium transition-all hover:border-blue-300"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Work Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium transition-all hover:border-blue-300"
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium transition-all hover:border-blue-300"
-              />
-              <input
-                type="text"
-                name="company"
-                placeholder="Company Name"
-                value={formData.company}
-                onChange={handleInputChange}
-                className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium transition-all hover:border-blue-300"
-              />
-              <textarea
-                name="message"
-                placeholder="Tell us about your team..."
-                rows={4}
-                value={formData.message}
-                onChange={handleInputChange}
-                className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium resize-none transition-all hover:border-blue-300"
-              />
-              <button type="submit" className="btn-primary w-full text-lg py-4 hover:scale-105 transition-transform">
+              {["name", "email", "phone", "company"].map((field) => (
+                <div key={field}>
+                  <input
+                    type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
+                    name={field}
+                    placeholder={
+                      field === "name"
+                        ? "Your Name"
+                        : field === "email"
+                        ? "Work Email"
+                        : field === "phone"
+                        ? "Phone Number"
+                        : "Company Name"
+                    }
+                    value={(formData as any)[field]}
+                    onChange={handleInputChange}
+                    className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium transition-all hover:border-blue-300"
+                  />
+                  {errors[field] && (
+                    <p className="text-red-500 text-sm mt-1">{errors[field]}</p>
+                  )}
+                </div>
+              ))}
+              <div>
+                <textarea
+                  name="message"
+                  placeholder="Tell us about your team..."
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium resize-none transition-all hover:border-blue-300"
+                />
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                )}
+              </div>
+              <button
+                type="submit"
+                className="btn-primary w-full text-lg py-4 hover:scale-105 transition-transform"
+              >
                 Schedule Demo
               </button>
             </form>
