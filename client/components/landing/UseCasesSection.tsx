@@ -35,33 +35,36 @@ export default function UseCasesSection() {
 
         <div className="grid md:grid-cols-2 gap-12">
           {useCases.map((useCase, idx) => (
-            <div
-              key={idx}
-              className="p-8 border-2 border-gray-100 rounded-2xl hover:border-blue-200 hover:shadow-xl transition-all duration-300 animate-bounce-up bg-white/70 backdrop-blur"
-              style={{
-                animationDelay: `${idx * 150}ms`,
-              }}
-            >
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                {useCase.title}
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {useCase.desc}
-              </p>
-              <div className="flex flex-col gap-2">
-                {useCase.stats.map((stat, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 text-sm text-blue-600 font-semibold animate-slide-in-left"
-                    style={{
-                      animationDelay: `${idx * 150 + i * 100}ms`,
-                    }}
-                  >
-                    <span className="text-red-600">✓</span> {stat}
-                  </div>
-                ))}
-              </div>
-            </div>
+           <div
+  key={idx}
+  className="group relative p-8 border-2 border-gray-100 rounded-2xl hover:border-blue-400 hover:shadow-2xl transition-all duration-300 animate-bounce-up bg-white/70 backdrop-blur overflow-hidden"
+  style={{
+    animationDelay: `${idx * 150}ms`,
+  }}
+>
+  {/* Glow on hover */}
+  <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-400/20 to-red-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"></div>
+
+  <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+    {useCase.title}
+  </h3>
+  <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+    {useCase.desc}
+  </p>
+  <div className="flex flex-col gap-2">
+    {useCase.stats.map((stat, i) => (
+      <div
+        key={i}
+        className="flex items-center gap-2 text-sm text-blue-600 font-semibold animate-slide-in-left group-hover:translate-x-2 transition-transform duration-300"
+        style={{
+          animationDelay: `${idx * 150 + i * 100}ms`,
+        }}
+      >
+        <span className="text-red-600 group-hover:scale-125 transition-transform duration-300">✓</span> {stat}
+      </div>
+    ))}
+  </div>
+</div>
           ))}
         </div>
       </div>

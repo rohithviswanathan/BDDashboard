@@ -21,17 +21,17 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4">Product</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#features" className="hover:text-white transition">
                   Features
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#pricing" className="hover:text-white transition">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#security" className="hover:text-white transition">
                   Security
                 </a>
               </li>
@@ -41,17 +41,17 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4">Company</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#about" className="hover:text-white transition">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#blog" className="hover:text-white transition">
                   Blog
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#careers" className="hover:text-white transition">
                   Careers
                 </a>
               </li>
@@ -61,12 +61,12 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4">Legal</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#privacy" className="hover:text-white transition">
                   Privacy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="#terms" className="hover:text-white transition">
                   Terms
                 </a>
               </li>
@@ -76,13 +76,13 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm">© 2026 Nexus. All rights reserved.</p>
           <div className="flex gap-6 mt-6 md:mt-0">
-            <a href="#" className="hover:text-white text-sm transition">
+            <a href="#twitter" className="hover:text-white text-sm transition">
               Twitter
             </a>
-            <a href="#" className="hover:text-white text-sm transition">
+            <a href="#linkedin" className="hover:text-white text-sm transition">
               LinkedIn
             </a>
-            <a href="#" className="hover:text-white text-sm transition">
+            <a href="#github" className="hover:text-white text-sm transition">
               GitHub
             </a>
           </div>

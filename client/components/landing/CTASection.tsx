@@ -14,13 +14,13 @@ export default function CTASection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-bounce-up" style={{ animationDelay: "0.4s" }}>
           <button
-            onClick={() => console.log("Try Free for 14 Days clicked")}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="px-10 py-4 bg-white text-blue-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:scale-105 active:scale-95 hover:shadow-2xl"
           >
             Try Free for 14 Days
           </button>
           <button
-            onClick={() => console.log("Request Demo clicked")}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="px-10 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-lg"
           >
             Request Demo
