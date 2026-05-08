@@ -7,10 +7,10 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="animate-fade-in-up">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-red-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-red-600 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-white font-black text-lg">Nexus</h3>
+              <h3 className="text-white font-black text-lg cursor-pointer hover:opacity-80" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Nexus</h3>
             </div>
             <p className="text-sm">
               The all-in-one business development platform for modern sales
