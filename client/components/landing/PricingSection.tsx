@@ -58,7 +58,7 @@ export default function PricingSection() {
   };
 
   return (
-    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20 animate-fade-in-up">
           <div className="badge mb-6 justify-center">Transparent Pricing</div>
