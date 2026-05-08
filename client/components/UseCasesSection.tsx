@@ -23,7 +23,7 @@ export default function UseCasesSection() {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 content-wrapper">
+    <section id="usecases" className="py-24 px-4 sm:px-6 lg:px-8 content-wrapper">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20 animate-fade-in-up">
           <div className="badge mb-6 justify-center">Use Cases</div>

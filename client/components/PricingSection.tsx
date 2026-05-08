@@ -52,8 +52,13 @@ export default function PricingSection() {
     },
   ];
 
+  const handlePriceButtonClick = (planName: string) => {
+    console.log(`${planName} plan selected`);
+    // Could redirect to checkout or scroll to contact form
+  };
+
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50 content-wrapper">
+    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50 content-wrapper">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20 animate-fade-in-up">
           <div className="badge mb-6 justify-center">Transparent Pricing</div>
@@ -129,7 +134,8 @@ export default function PricingSection() {
               </ul>
 
               <button
-                className={`w-full py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 ${
+                onClick={() => handlePriceButtonClick(plan.name)}
+                className={`w-full py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 active:scale-95 ${
                   plan.featured
                     ? "bg-white text-blue-600 hover:bg-gray-100 hover:shadow-lg"
                     : "bg-gradient-to-r from-blue-600 to-red-600 text-white hover:shadow-lg"

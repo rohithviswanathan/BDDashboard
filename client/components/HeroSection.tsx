@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden content-wrapper">
+    <section id="hero" className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden content-wrapper">
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 rounded-full opacity-30 blur-3xl"></div>
       <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-red-100 rounded-full opacity-30 blur-3xl"></div>
 
@@ -20,26 +20,34 @@ export default function HeroSection() {
             Track leads, manage pipelines, analyze performance, and close more
             deals with powerful insights.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
-            <button className="btn-primary flex items-center justify-center gap-2 hover:scale-110 transition-transform">
-              Start Free Trial <ChevronRight size={18} />
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+            <button
+              onClick={() => console.log("Start Free Trial clicked")}
+              className="btn-primary flex items-center justify-center gap-2 hover:scale-110 transition-transform active:scale-95 group"
+            >
+              Start Free Trial <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="btn-secondary hover:scale-105 transition-transform">
+            <button
+              onClick={() => console.log("Watch Demo clicked")}
+              className="btn-secondary hover:scale-105 transition-transform active:scale-95"
+            >
               Watch Demo
             </button>
           </div>
           <div className="flex items-center gap-6 text-sm text-gray-600 pt-6">
-            <div className="animate-bounce-up" style={{ animationDelay: "0s" }}>
-              <p className="font-black text-blue-600">10,000+</p>
-              <p>Active Users</p>
+            <div className="animate-bounce-up hover:animate-glow-pulse transition-all" style={{ animationDelay: "0s" }}>
+              <p className="font-black text-transparent bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-lg">10,000+</p>
+              <p className="text-gray-600">Active Users</p>
             </div>
-            <div className="animate-bounce-up" style={{ animationDelay: "0.1s" }}>
-              <p className="font-black text-red-600">99.9%</p>
-              <p>Uptime SLA</p>
+            <div className="w-px h-12 bg-gradient-to-b from-blue-200 to-red-200"></div>
+            <div className="animate-bounce-up hover:animate-glow-pulse transition-all" style={{ animationDelay: "0.1s" }}>
+              <p className="font-black text-transparent bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-lg">99.9%</p>
+              <p className="text-gray-600">Uptime SLA</p>
             </div>
-            <div className="animate-bounce-up" style={{ animationDelay: "0.2s" }}>
-              <p className="font-black text-blue-600">24/7</p>
-              <p>Support</p>
+            <div className="w-px h-12 bg-gradient-to-b from-blue-200 to-red-200"></div>
+            <div className="animate-bounce-up hover:animate-glow-pulse transition-all" style={{ animationDelay: "0.2s" }}>
+              <p className="font-black text-transparent bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-lg">24/7</p>
+              <p className="text-gray-600">Support</p>
             </div>
           </div>
         </div>

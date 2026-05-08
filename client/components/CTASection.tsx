@@ -13,10 +13,16 @@ export default function CTASection() {
           installation. Try it now and see why thousands of teams trust us.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-bounce-up" style={{ animationDelay: "0.4s" }}>
-          <button className="px-10 py-4 bg-white text-blue-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:scale-105">
+          <button
+            onClick={() => console.log("Try Free for 14 Days clicked")}
+            className="px-10 py-4 bg-white text-blue-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:scale-105 active:scale-95 hover:shadow-2xl"
+          >
             Try Free for 14 Days
           </button>
-          <button className="px-10 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105">
+          <button
+            onClick={() => console.log("Request Demo clicked")}
+            className="px-10 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-lg"
+          >
             Request Demo
           </button>
         </div>

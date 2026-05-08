@@ -24,7 +24,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 content-wrapper">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 content-wrapper">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
         <div className="space-y-8 animate-slide-in-left">
           <div>
@@ -39,20 +39,27 @@ export default function ContactSection() {
           </div>
 
           <div className="space-y-6">
-            <div className="flex gap-4 p-6 bg-blue-50 rounded-xl border border-blue-200 animate-bounce-up">
-              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-              <div>
+            <button
+              onClick={() => window.location.href = "tel:+18558639873"}
+              className="w-full flex gap-4 p-6 bg-blue-50 rounded-xl border border-blue-200 animate-bounce-up hover:bg-blue-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+            >
+              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+              <div className="text-left">
                 <p className="font-bold text-gray-900">Phone</p>
                 <p className="text-gray-600">+1 (855) NEXUS-BD</p>
               </div>
-            </div>
-            <div className="flex gap-4 p-6 bg-red-50 rounded-xl border border-red-200 animate-bounce-up" style={{ animationDelay: "0.1s" }}>
-              <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
-              <div>
+            </button>
+            <button
+              onClick={() => window.location.href = "mailto:sales@nexusgrowth.io"}
+              className="w-full flex gap-4 p-6 bg-red-50 rounded-xl border border-red-200 animate-bounce-up hover:bg-red-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+              <div className="text-left">
                 <p className="font-bold text-gray-900">Email</p>
                 <p className="text-gray-600">sales@nexusgrowth.io</p>
               </div>
-            </div>
+            </button>
             <div className="flex gap-4 p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-xl border border-blue-200 animate-bounce-up" style={{ animationDelay: "0.2s" }}>
               <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
               <div>
