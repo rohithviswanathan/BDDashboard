@@ -8,28 +8,29 @@ export default function HeroSection() {
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
         <div className="space-y-8 animate-slide-in-left">
-          <div className="badge">📊 Complete Sales Intelligence</div>
-          <h2 className="text-6xl md:text-7xl font-black leading-tight">
+          <div className="badge mb-2">✨ Complete Sales Intelligence</div>
+          <div className="section-divider"></div>
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight">
             Drive Business{" "}
-            <span className="text-transparent bg-gradient-to-r from-blue-600 via-red-600 to-blue-600 bg-clip-text">
+            <span className="gradient-text">
               Growth with Data
             </span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg font-medium">
             Nexus is the all-in-one dashboard for business development teams.
             Track leads, manage pipelines, analyze performance, and close more
             deals with powerful insights.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+          <div className="flex flex-col sm:flex-row gap-4 pt-8 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
             <button
               onClick={() => console.log("Start Free Trial clicked")}
-              className="btn-primary flex items-center justify-center gap-2 hover:scale-110 transition-transform active:scale-95 group"
+              className="premium-button px-8 py-3.5 bg-gradient-to-r from-blue-600 to-red-600 text-white font-semibold rounded-lg hover:shadow-2xl hover:scale-110 active:scale-95 group flex items-center justify-center gap-2"
             >
-              Start Free Trial <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              Start Free Trial <ChevronRight size={20} className="group-hover:translate-x-2 transition-transform" />
             </button>
             <button
               onClick={() => console.log("Watch Demo clicked")}
-              className="btn-secondary hover:scale-105 transition-transform active:scale-95"
+              className="px-8 py-3.5 text-gray-700 font-semibold rounded-lg border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 smooth-transition"
             >
               Watch Demo
             </button>
@@ -54,8 +55,8 @@ export default function HeroSection() {
 
         <div className="animate-slide-in-right">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-red-600 rounded-3xl blur-2xl opacity-20 animate-pulse"></div>
-            <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 border border-slate-700 shadow-2xl overflow-hidden animate-float">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-red-600 rounded-3xl blur-3xl opacity-30 animate-pulse" style={{ animationDuration: "3s" }}></div>
+            <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 border border-slate-600/50 shadow-2xl overflow-hidden animate-float-slow premium-shadow">
               {/* Mock Dashboard */}
               <div className="space-y-6">
                 <div className="flex justify-between items-center">

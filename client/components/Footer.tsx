@@ -2,16 +2,16 @@ import { BarChart3 } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-gray-400 py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-400 py-20 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-gray-800/50">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="animate-fade-in-up">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-red-600 rounded-lg flex items-center justify-center">
-                <BarChart3 className="w-5 h-5 text-white" />
+            <div className="flex items-center gap-3 mb-4 group">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 via-blue-700 to-red-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 smooth-transition">
+                  <BarChart3 className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-white font-black text-xl gradient-text">Nexus</h3>
               </div>
-              <h3 className="text-white font-black text-lg">Nexus</h3>
-            </div>
             <p className="text-sm">
               The all-in-one business development platform for modern sales
               teams.

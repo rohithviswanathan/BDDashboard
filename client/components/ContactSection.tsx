@@ -24,40 +24,41 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 content-wrapper">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+    <section id="contact" className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50/20 to-white content-wrapper">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className="space-y-8 animate-slide-in-left">
-          <div>
-            <div className="badge mb-6">Get In Touch</div>
-            <h2 className="text-5xl font-black mb-6 text-gray-900">
+          <div className="space-y-6">
+            <div className="badge mb-4">📞 Get In Touch</div>
+            <div className="section-divider"></div>
+            <h2 className="text-5xl md:text-6xl font-black mb-6 gradient-text">
               Ready to Transform Your Sales?
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 leading-relaxed font-medium">
               Join thousands of business development teams using Nexus to
               close more deals faster. Schedule a demo with our team today.
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             <button
               onClick={() => window.location.href = "tel:+18558639873"}
-              className="w-full flex gap-4 p-6 bg-blue-50 rounded-xl border border-blue-200 animate-bounce-up hover:bg-blue-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              className="w-full flex gap-4 p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl border border-blue-200 animate-bounce-up hover:bg-blue-100/70 hover:shadow-lg hover:border-blue-400 smooth-transition cursor-pointer group premium-card glass-effect"
             >
-              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 group-hover:scale-125 group-hover:-rotate-12 smooth-transition" />
               <div className="text-left">
-                <p className="font-bold text-gray-900">Phone</p>
-                <p className="text-gray-600">+1 (855) NEXUS-BD</p>
+                <p className="font-bold text-gray-900 text-lg">Phone</p>
+                <p className="text-gray-600 font-medium">+1 (855) NEXUS-BD</p>
               </div>
             </button>
             <button
               onClick={() => window.location.href = "mailto:sales@nexusgrowth.io"}
-              className="w-full flex gap-4 p-6 bg-red-50 rounded-xl border border-red-200 animate-bounce-up hover:bg-red-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              className="w-full flex gap-4 p-6 bg-gradient-to-br from-red-50 to-red-100/50 rounded-2xl border border-red-200 animate-bounce-up hover:bg-red-100/70 hover:shadow-lg hover:border-red-400 smooth-transition cursor-pointer group premium-card glass-effect"
               style={{ animationDelay: "0.1s" }}
             >
-              <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+              <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-1 group-hover:scale-125 group-hover:-rotate-12 smooth-transition" />
               <div className="text-left">
-                <p className="font-bold text-gray-900">Email</p>
-                <p className="text-gray-600">sales@nexusgrowth.io</p>
+                <p className="font-bold text-gray-900 text-lg">Email</p>
+                <p className="text-gray-600 font-medium">sales@nexusgrowth.io</p>
               </div>
             </button>
             <div className="flex gap-4 p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-xl border border-blue-200 animate-bounce-up" style={{ animationDelay: "0.2s" }}>
@@ -71,11 +72,12 @@ export default function ContactSection() {
         </div>
 
         <div className="animate-slide-in-right">
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-10 border border-gray-200 shadow-xl">
-            <h3 className="text-3xl font-bold mb-8 text-gray-900">
+          <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl p-10 border border-gray-200 glass-effect premium-shadow">
+            <h3 className="text-3xl md:text-4xl font-black mb-2 gradient-text">
               Schedule a Demo
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <p className="text-gray-600 mb-8 font-medium">Get a personalized walkthrough in 15 minutes</p>
+            <form onSubmit={handleSubmit} className="space-y-5">
               <input
                 type="text"
                 name="name"
