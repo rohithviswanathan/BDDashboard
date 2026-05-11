@@ -58,13 +58,12 @@ export default function PricingSection() {
   };
 
   return (
-    <section id="pricing" className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-red-50/20 to-white content-wrapper">
+    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-24 animate-fade-in-up">
-          <div className="badge mb-4 justify-center">💰 Transparent Pricing</div>
-          <div className="section-divider" style={{ margin: "1rem auto 2rem" }}></div>
-          <h2 className="text-5xl md:text-6xl font-black mb-6 gradient-text">Plans for Every Team</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+        <div className="text-center mb-20 animate-fade-in-up">
+          <div className="badge mb-6 justify-center">Transparent Pricing</div>
+          <h2 className="section-title">Plans for Every Team</h2>
+          <p className="section-subtitle">
             Start free. Scale as you grow. No credit card required.
           </p>
         </div>
@@ -72,10 +71,10 @@ export default function PricingSection() {
           {plans.map((plan, idx) => (
             <div
               key={idx}
-              className={`relative rounded-3xl p-10 animate-scale-in-smooth smooth-transition ${
+              className={`relative rounded-2xl p-10 transition-all duration-500 transform hover:scale-105 animate-rotate-in ${
                 plan.featured
-                  ? "bg-gradient-to-br from-blue-600 via-blue-700 to-red-600 text-white md:scale-105 ring-2 ring-offset-4 ring-blue-400 premium-shadow hover:shadow-2xl hover:scale-110"
-                  : "bg-white border-2 border-gray-200 hover:border-blue-400 hover:shadow-2xl glass-effect"
+                  ? "bg-gradient-to-br from-blue-600 to-red-600 text-white shadow-2xl ring-2 ring-offset-4 ring-blue-600 md:scale-105"
+                  : "bg-white border-2 border-gray-100 hover:border-blue-200"
               }`}
               style={{
                 animationDelay: `${idx * 150}ms`,
@@ -135,11 +134,11 @@ export default function PricingSection() {
               </ul>
 
               <button
-                onClick={() => handlePriceButtonClick(plan.name)}
-                className={`w-full py-4 rounded-xl font-bold text-lg smooth-transition hover:scale-105 active:scale-95 premium-button ${
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className={`w-full py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 active:scale-95 ${
                   plan.featured
-                    ? "bg-white text-blue-600 hover:bg-gray-50 hover:shadow-2xl"
-                    : "bg-gradient-to-r from-blue-600 to-red-600 text-white hover:shadow-2xl"
+                    ? "bg-white text-blue-600 hover:bg-gray-100 hover:shadow-lg"
+                    : "bg-gradient-to-r from-blue-600 to-red-600 text-white hover:shadow-lg"
                 }`}
               >
                 {plan.cta}
