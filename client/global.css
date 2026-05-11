@@ -284,6 +284,298 @@
   }
 }
 
+/* Header Animation Keyframes */
+@keyframes header-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes header-multi-glow {
+  0%, 100% { 
+    opacity: 0.5;
+    filter: blur(12px);
+  }
+  50% { 
+    opacity: 1;
+    filter: blur(8px);
+  }
+}
+
+/* Add these classes to your @layer components section */
+
+.header-nav-underline {
+  position: absolute;
+  bottom: 6px;
+  height: 2px;
+  background: linear-gradient(90deg, #2563eb, #dc2626);
+  transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-nav-item {
+  position: relative;
+}
+
+.header-nav-item:hover .header-nav-underline {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.header-nav-item .header-nav-underline {
+  left: 50%;
+  right: 50%;
+  opacity: 0;
+}
+
+.header-logo-glow {
+  transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-logo-glow:hover {
+  filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.5));
+}
+
+.header-shimmer {
+  animation: header-shimmer 2s infinite;
+}
+
+.header-smooth-transition {
+  transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header-button-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-button-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-button-glow:hover::before {
+  left: 100%;
+}
+
+.header-multi-glow-effect {
+  animation: header-multi-glow 3s ease-in-out infinite;
+}
+
+/* ===== Hero Section Styles ===== */
+
+.hero-badge {
+  @apply inline-flex px-4 py-2 rounded-full font-bold text-sm;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: #1e40af;
+  transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-badge:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(239, 68, 68, 0.2) 100%);
+  border-color: rgba(37, 99, 235, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+}
+
+.hero-heading {
+  animation: hero-heading-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-subheading {
+  animation: hero-subheading-in 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  backdrop-filter: blur(10px);
+  transition: all 600ms ease-out;
+}
+
+.hero-subheading:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.hero-button-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-button-primary:hover::before {
+  left: 100%;
+}
+
+.hero-button-primary:hover {
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+  filter: brightness(1.1);
+}
+
+.hero-button-secondary {
+  position: relative;
+  overflow: hidden;
+  transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-button-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
+  transition: left 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-button-secondary:hover::before {
+  left: 100%;
+}
+
+.hero-button-secondary:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border-color: #2563eb;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.hero-stats-box {
+  animation: hero-stats-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+  backdrop-filter: blur(12px);
+  transition: all 500ms ease-out;
+}
+
+.hero-stats-box:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hero-stat-item {
+  transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-stat-item:hover {
+  transform: scale(1.05);
+}
+
+.hero-dashboard-wrapper {
+  animation: hero-dashboard-in 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+.hero-dashboard-card {
+  transition: all 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+
+.hero-dashboard-glow {
+  transition: all 600ms ease-out;
+}
+
+.hero-dashboard-wrapper:hover .hero-dashboard-glow {
+  opacity: 0.4;
+}
+
+.hero-dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px rgba(37, 99, 235, 0.2);
+}
+
+.hero-progress-bar {
+  transition: all 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-progress-bar:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-status-dot {
+  animation: hero-pulse 2s ease-in-out infinite;
+}
+
+.hero-status-dot:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.hero-status-dot:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.hero-divider {
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.3) 0%, transparent 100%);
+}
+
+/* ===== Hero Section Keyframes ===== */
+@keyframes hero-heading-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-subheading-in {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-stats-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-dashboard-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
 @layer components {
   .btn-primary {
     @apply px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold text-sm transition-all duration-300 hover:bg-blue-700 hover:shadow-lg active:scale-95;
