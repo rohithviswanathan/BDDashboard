@@ -44,22 +44,19 @@ export default function FeaturesSection() {
     },
   };
 
-  const item = {
-    hidden: { opacity: 0, y: 18 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.62, ease: landingEase },
-    },
-  };
-
   return (
     <section
       id="features"
       className="landing-section-bg py-28 md:py-32 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+        <motion.div
+          className="text-center mb-16 md:mb-20 max-w-3xl mx-auto"
+          initial={reduce ? false : { opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: landingEase }}
+        >
           <div className="badge mb-6 justify-center shadow-sm">Powerful Features</div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-5 text-slate-900 tracking-tight">
             Everything You Need
@@ -68,7 +65,7 @@ export default function FeaturesSection() {
             Build, manage, and scale your business development operations with
             our comprehensive platform
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
@@ -77,10 +74,22 @@ export default function FeaturesSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.08 }}
         >
-          {features.map((feature) => (
+          {features.map((feature, idx) => (
             <motion.div
               key={feature.number}
-              variants={item}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 24,
+                  x: reduce ? 0 : idx % 2 === 0 ? -36 : 36,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  x: 0,
+                  transition: { duration: 0.64, ease: landingEase },
+                },
+              }}
               className="group relative"
             >
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-blue-500/20 to-red-500/15 opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100" />

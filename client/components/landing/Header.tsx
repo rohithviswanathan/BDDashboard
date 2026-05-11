@@ -52,7 +52,7 @@ export default function Header() {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-2">
-            {['Features', 'Pricing', 'Contact'].map((item) => (
+            {['Features', 'Insights', 'Pricing', 'Contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => handleScroll(item.toLowerCase())}

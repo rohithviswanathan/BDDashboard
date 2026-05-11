@@ -64,22 +64,19 @@ export default function PricingSection() {
     },
   };
 
-  const item = {
-    hidden: { opacity: 0, y: 22 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.68, ease: landingEase },
-    },
-  };
-
   return (
     <section
       id="pricing"
       className="landing-section-bg py-28 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+        <motion.div
+          className="text-center mb-16 md:mb-20 max-w-3xl mx-auto"
+          initial={reduce ? false : { opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7, ease: landingEase }}
+        >
           <div className="badge mb-6 justify-center shadow-sm">
             Transparent Pricing
           </div>
@@ -87,7 +84,7 @@ export default function PricingSection() {
           <p className="section-subtitle text-slate-600">
             Start free. Scale as you grow. No credit card required.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
           className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch"
@@ -99,10 +96,22 @@ export default function PricingSection() {
           {plans.map((plan) => (
             <motion.div
               key={plan.name}
-              variants={item}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 36,
+                  scale: reduce ? 1 : plan.featured ? 0.93 : 0.97,
+                },
+                visible: {
+                  opacity: 1,
+                  y: plan.featured ? -4 : 0,
+                  scale: plan.featured ? 1.02 : 1,
+                  transition: { duration: 0.7, ease: landingEase },
+                },
+              }}
               className={`relative rounded-2xl p-8 md:p-10 flex flex-col transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 plan.featured
-                  ? "bg-gradient-to-br from-blue-700 via-blue-600 to-red-600 text-white shadow-[0_24px_60px_-20px_rgba(37,99,235,0.45)] ring-1 ring-white/20 md:-translate-y-1 md:scale-[1.02]"
+                  ? "bg-gradient-to-br from-blue-700 via-blue-600 to-red-600 text-white shadow-[0_24px_60px_-20px_rgba(37,99,235,0.45)] ring-1 ring-white/20"
                   : "landing-glass-panel ring-slate-200/70 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-24px_rgba(15,23,42,0.14)]"
               }`}
             >

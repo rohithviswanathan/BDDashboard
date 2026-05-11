@@ -103,6 +103,12 @@
     @apply border-border;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: "Lato", sans-serif;
@@ -155,6 +161,16 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes shimmer-placeholder {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
   }
 }
 
