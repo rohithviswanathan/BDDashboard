@@ -111,16 +111,19 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
     overflow-wrap: anywhere;
     word-break: break-word;
+    font-family: "Poppins", sans-serif;
   }
 
   pre,
@@ -799,5 +802,25 @@
 
   .animate-reveal-up-soft {
     animation: reveal-up-soft 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /**
+   * Landing cards — lift, slight scale, richer shadow on hover (content stays readable).
+   */
+ .landing-hover-card {
+    @apply transition duration-500;
+    transition-property: transform, box-shadow, ring-color;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .landing-hover-card:hover {
+    @apply -translate-y-2 scale-[1.02] shadow-[0_28px_56px_-20px_rgba(15,23,42,0.16)] ring-2 ring-blue-500/15;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .landing-hover-card:hover {
+      transform: none;
+      scale: none;
+    }
   }
 }
