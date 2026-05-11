@@ -146,6 +146,18 @@
   }
 }
 
+/* Softer on-load motion (legacy sections) */
+@keyframes reveal-up-soft {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes slide-up {
   0% {
     opacity: 0;
@@ -739,5 +751,37 @@
   .section-divider {
     @apply h-1 w-16 mx-auto mb-8 rounded-full;
     background: linear-gradient(90deg, #0052CC, #C41E3A);
+  }
+
+  /* Landing page — unified surfaces (blue / slate / red only) */
+  .landing-section-bg {
+    background-color: hsl(210 40% 98%);
+    background-image:
+      linear-gradient(
+        168deg,
+        hsl(210 40% 99.5%) 0%,
+        hsl(0 0% 100%) 45%,
+        hsl(214 32% 96.5%) 100%
+      ),
+      radial-gradient(
+        120% 75% at 100% -5%,
+        rgba(37, 99, 235, 0.085) 0%,
+        transparent 52%
+      ),
+      radial-gradient(
+        95% 55% at 0% 102%,
+        rgba(220, 38, 38, 0.055) 0%,
+        transparent 50%
+      );
+  }
+
+  .landing-glass-panel {
+    @apply rounded-2xl border border-white/60 bg-white/70 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_24px_48px_-24px_rgba(15,23,42,0.14)];
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .animate-reveal-up-soft {
+    animation: reveal-up-soft 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }

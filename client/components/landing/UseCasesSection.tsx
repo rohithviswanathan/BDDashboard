@@ -1,4 +1,9 @@
+import { motion, useReducedMotion } from "framer-motion";
+import { landingEase } from "@/components/landing/Reveal";
+
 export default function UseCasesSection() {
+  const reduce = useReducedMotion();
+
   const useCases = [
     {
       title: "B2B SaaS",
@@ -22,51 +27,75 @@ export default function UseCasesSection() {
     },
   ];
 
+  const container = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: reduce ? 0 : 0.1, delayChildren: 0.05 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.65, ease: landingEase },
+    },
+  };
+
   return (
-    <section id="usecases" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <section
+      id="usecases"
+      className="landing-section-bg py-28 md:py-32 px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20 animate-fade-in-up">
-          <div className="badge mb-6 justify-center">Use Cases</div>
-          <h2 className="section-title">Built for Your Industry</h2>
-          <p className="section-subtitle">
+        <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+          <div className="badge mb-6 justify-center shadow-sm">Use Cases</div>
+          <h2 className="section-title !mb-4">Built for Your Industry</h2>
+          <p className="section-subtitle text-slate-600">
             Nexus adapts to any business development scenario
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {useCases.map((useCase, idx) => (
-           <div
-  key={idx}
-  className="group relative p-8 border-2 border-gray-100 rounded-2xl hover:border-blue-400 hover:shadow-2xl transition-all duration-300 animate-bounce-up bg-white/70 backdrop-blur overflow-hidden"
-  style={{
-    animationDelay: `${idx * 150}ms`,
-  }}
->
-  {/* Glow on hover */}
-  <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-400/20 to-red-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"></div>
+        <motion.div
+          className="grid md:grid-cols-2 gap-6 lg:gap-8"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {useCases.map((useCase) => (
+            <motion.div
+              key={useCase.title}
+              variants={item}
+              className="group relative rounded-2xl p-8 landing-glass-panel ring-1 ring-slate-200/60 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_28px_56px_-24px_rgba(15,23,42,0.15)] overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-transparent to-red-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-  <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-    {useCase.title}
-  </h3>
-  <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-    {useCase.desc}
-  </p>
-  <div className="flex flex-col gap-2">
-    {useCase.stats.map((stat, i) => (
-      <div
-        key={i}
-        className="flex items-center gap-2 text-sm text-blue-600 font-semibold animate-slide-in-left group-hover:translate-x-2 transition-transform duration-300"
-        style={{
-          animationDelay: `${idx * 150 + i * 100}ms`,
-        }}
-      >
-        <span className="text-red-600 group-hover:scale-125 transition-transform duration-300">✓</span> {stat}
-      </div>
-    ))}
-  </div>
-</div>
+              <div className="relative">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400">
+                  {useCase.title}
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  {useCase.desc}
+                </p>
+                <div className="flex flex-col gap-2">
+                  {useCase.stats.map((stat) => (
+                    <div
+                      key={stat}
+                      className="flex items-center gap-2 text-sm text-blue-700 font-semibold"
+                    >
+                      <span className="text-red-600" aria-hidden>
+                        ✓
+                      </span>
+                      {stat}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

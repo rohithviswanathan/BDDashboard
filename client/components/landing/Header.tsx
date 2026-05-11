@@ -22,8 +22,8 @@ export default function Header() {
     <header 
       className={`sticky top-0 z-50 header-smooth-transition ${
         isScrolled 
-          ? 'bg-white/98 backdrop-blur-2xl border-b border-gray-200/40 shadow-2xl' 
-          : 'bg-white/90 backdrop-blur-xl border-b border-gray-100/20 shadow-lg'
+          ? 'bg-white/95 backdrop-blur-2xl border-b border-slate-200/50 shadow-[0_8px_30px_-8px_rgba(15,23,42,0.12)]' 
+          : 'bg-white/88 backdrop-blur-xl border-b border-white/30 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.08)]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,7 +91,7 @@ export default function Header() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-500 ease-out" />
               
               {/* Animated gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out" />
               
               {/* Premium shimmer */}
               <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 translate-x-full group-hover:translate-x-0 header-shimmer transition-transform duration-700 ease-out" />
@@ -100,7 +100,7 @@ export default function Header() {
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-red-600 rounded-xl opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-500 ease-out" />
               
               {/* Text with smooth scale */}
-              <span className="relative inline-block group-hover:scale-110 transition-transform duration-400 ease-out">
+              <span className="relative inline-block group-hover:translate-y-[-1px] transition-transform duration-400 ease-out">
                 Start Free
               </span>
             </button>

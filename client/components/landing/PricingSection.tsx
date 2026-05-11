@@ -1,4 +1,9 @@
+import { motion, useReducedMotion } from "framer-motion";
+import { landingEase } from "@/components/landing/Reveal";
+
 export default function PricingSection() {
+  const reduce = useReducedMotion();
+
   const plans = [
     {
       name: "Starter",
@@ -52,79 +57,97 @@ export default function PricingSection() {
     },
   ];
 
-  const handlePriceButtonClick = (planName: string) => {
-    console.log(`${planName} plan selected`);
-    // Could redirect to checkout or scroll to contact form
+  const container = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: reduce ? 0 : 0.1, delayChildren: 0.08 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 22 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.68, ease: landingEase },
+    },
   };
 
   return (
-    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section
+      id="pricing"
+      className="landing-section-bg py-28 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20 animate-fade-in-up">
-          <div className="badge mb-6 justify-center">Transparent Pricing</div>
-          <h2 className="section-title">Plans for Every Team</h2>
-          <p className="section-subtitle">
+        <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+          <div className="badge mb-6 justify-center shadow-sm">
+            Transparent Pricing
+          </div>
+          <h2 className="section-title !mb-4">Plans for Every Team</h2>
+          <p className="section-subtitle text-slate-600">
             Start free. Scale as you grow. No credit card required.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {plans.map((plan, idx) => (
-            <div
-              key={idx}
-              className={`relative rounded-2xl p-10 transition-all duration-500 transform hover:scale-105 animate-rotate-in ${
+
+        <motion.div
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.12 }}
+        >
+          {plans.map((plan) => (
+            <motion.div
+              key={plan.name}
+              variants={item}
+              className={`relative rounded-2xl p-8 md:p-10 flex flex-col transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 plan.featured
-                  ? "bg-gradient-to-br from-blue-600 to-red-600 text-white shadow-2xl ring-2 ring-offset-4 ring-blue-600 md:scale-105"
-                  : "bg-white border-2 border-gray-100 hover:border-blue-200"
+                  ? "bg-gradient-to-br from-blue-700 via-blue-600 to-red-600 text-white shadow-[0_24px_60px_-20px_rgba(37,99,235,0.45)] ring-1 ring-white/20 md:-translate-y-1 md:scale-[1.02]"
+                  : "landing-glass-panel ring-slate-200/70 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-24px_rgba(15,23,42,0.14)]"
               }`}
-              style={{
-                animationDelay: `${idx * 150}ms`,
-              }}
             >
               {plan.featured && (
-                <div className="absolute -top-4 right-8 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider animate-swing">
+                <div className="absolute -top-3 right-6 rounded-full bg-white/95 text-blue-700 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest shadow-md">
                   Most Popular
                 </div>
               )}
 
-              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+              <h3 className="text-2xl font-bold mb-2 tracking-tight">{plan.name}</h3>
               <p
-                className={`text-sm mb-6 ${
-                  plan.featured ? "text-blue-100" : "text-gray-600"
+                className={`text-sm mb-6 leading-relaxed ${
+                  plan.featured ? "text-blue-50/95" : "text-slate-600"
                 }`}
               >
                 {plan.description}
               </p>
 
               <div className="mb-8">
-                <span className="text-5xl font-black">{plan.price}</span>
+                <span className="text-4xl md:text-5xl font-black tracking-tight">
+                  {plan.price}
+                </span>
                 <span
                   className={`${
-                    plan.featured ? "text-blue-100" : "text-gray-500"
-                  } text-sm`}
+                    plan.featured ? "text-blue-100/90" : "text-slate-500"
+                  } text-sm font-medium ml-1`}
                 >
                   {plan.period}
                 </span>
               </div>
 
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feature, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 animate-fade-in-up"
-                    style={{
-                      animationDelay: `${idx * 150 + i * 50}ms`,
-                    }}
-                  >
+              <ul className="space-y-3.5 mb-8 flex-1">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
                     <span
-                      className={`${
-                        plan.featured ? "text-yellow-300" : "text-blue-600"
-                      } text-xl font-black`}
+                      className={`mt-0.5 text-lg leading-none ${
+                        plan.featured ? "text-amber-200" : "text-blue-600"
+                      }`}
+                      aria-hidden
                     >
                       ✓
                     </span>
                     <span
                       className={
-                        plan.featured ? "text-blue-50" : "text-gray-700"
+                        plan.featured ? "text-blue-50/95" : "text-slate-700"
                       }
                     >
                       {feature}
@@ -134,18 +157,27 @@ export default function PricingSection() {
               </ul>
 
               <button
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className={`w-full py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 active:scale-95 ${
+                type="button"
+                onClick={() => {
+                  if (plan.name === "Enterprise") {
+                    document.getElementById("contact")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                    return;
+                  }
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className={`w-full py-3.5 rounded-xl font-bold text-base transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 active:translate-y-0 ${
                   plan.featured
-                    ? "bg-white text-blue-600 hover:bg-gray-100 hover:shadow-lg"
-                    : "bg-gradient-to-r from-blue-600 to-red-600 text-white hover:shadow-lg"
+                    ? "bg-white text-blue-700 hover:bg-slate-50 shadow-lg shadow-black/10"
+                    : "bg-gradient-to-r from-blue-600 to-red-600 text-white hover:shadow-lg hover:shadow-blue-600/25"
                 }`}
               >
                 {plan.cta}
               </button>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
