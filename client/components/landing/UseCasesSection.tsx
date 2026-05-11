@@ -37,7 +37,7 @@ export default function UseCasesSection() {
   return (
     <section
       id="usecases"
-      className="landing-section-bg py-28 md:py-32 px-4 sm:px-6 lg:px-8"
+      className="py-28 md:py-32 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -77,12 +77,12 @@ export default function UseCasesSection() {
                   transition: { duration: 0.66, ease: landingEase },
                 },
               }}
-              className="group relative rounded-2xl p-8 landing-glass-panel ring-1 ring-slate-200/60 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_28px_56px_-24px_rgba(15,23,42,0.15)] overflow-hidden"
+              className="bg-white/95 backdrop-blur-md group relative z-0 overflow-hidden rounded-2xl p-8 landing-glass-panel landing-hover-card ring-1 ring-slate-200/60"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-transparent to-red-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="relative">
-                <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400">
+              <div className="relative z-10">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400 group-hover:translate-x-0.5">
                   {useCase.title}
                 </h3>
                 <p className="text-slate-600 mb-6 leading-relaxed">

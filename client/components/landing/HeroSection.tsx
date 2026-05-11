@@ -45,7 +45,7 @@ export default function HeroSection() {
             </span>
           </h2>
 
-          <p className="landing-glass-panel text-lg md:text-xl text-slate-800 leading-relaxed max-w-lg font-medium p-6 md:p-7">
+          <p className="landing-glass-panel text-lg md:text-xl text-slate-800 leading-relaxed max-w-lg font-medium p-6 md:p-7 transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-xl hover:ring-1 hover:ring-blue-200/40">
             Nexus is the all-in-one dashboard for business development teams.
             Track leads, manage pipelines, analyze performance, and close more
             deals with powerful insights.
@@ -55,7 +55,7 @@ export default function HeroSection() {
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="relative px-8 py-4 font-bold text-white text-base md:text-lg rounded-2xl overflow-hidden group shadow-lg shadow-blue-600/25 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/30 active:translate-y-0"
+              className="relative px-8 py-4 font-bold text-white text-base md:text-lg rounded-2xl overflow-hidden group shadow-lg shadow-blue-600/25 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-600/35 active:translate-y-0 active:scale-100"
               style={{
                 background:
                   "linear-gradient(135deg, #2563eb 0%, #1d4ed8 42%, #dc2626 100%)",
@@ -78,7 +78,7 @@ export default function HeroSection() {
                   behavior: "smooth",
                 })
               }
-              className="relative px-8 py-4 font-bold text-slate-900 text-base md:text-lg rounded-2xl overflow-hidden group transition-[transform,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] landing-glass-panel hover:-translate-y-0.5 hover:bg-white/85 active:translate-y-0"
+              className="relative px-8 py-4 font-bold text-slate-900 text-base md:text-lg rounded-2xl overflow-hidden group transition-[transform,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] landing-glass-panel hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/90 hover:shadow-xl active:translate-y-0 active:scale-100"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-slate-100/0 via-slate-200/40 to-slate-100/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <span className="relative flex items-center justify-center gap-2">
@@ -87,7 +87,7 @@ export default function HeroSection() {
             </button>
           </div>
 
-          <div className="landing-glass-panel flex flex-wrap items-stretch gap-6 sm:gap-8 text-sm text-slate-700 p-6 max-w-lg">
+          <div className="landing-glass-panel flex flex-wrap items-stretch gap-6 sm:gap-8 text-sm text-slate-700 p-6 max-w-lg transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-xl hover:ring-1 hover:ring-slate-200/80">
             {[
               {
                 value: (
@@ -156,9 +156,9 @@ export default function HeroSection() {
             <div className="relative group">
               <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-blue-500/25 via-white/40 to-red-500/20 blur-2xl opacity-70 group-hover:opacity-90 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
 
-              <div className="relative landing-glass-panel rounded-3xl p-8 md:p-9 overflow-hidden ring-1 ring-slate-200/40">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-red-50/40 pointer-events-none" />
-                <div className="relative space-y-6">
+              <div className="group/preview relative z-0 landing-glass-panel landing-hover-card rounded-3xl p-8 md:p-9 overflow-hidden ring-1 ring-slate-200/40">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-red-50/40 pointer-events-none transition-opacity duration-500 group-hover/preview:opacity-100 opacity-90" />
+              <div className="relative z-10 space-y-6">
                   <div className="flex justify-between items-center">
                     <h3 className="text-slate-900 font-bold text-lg tracking-tight">
                       Sales Pipeline

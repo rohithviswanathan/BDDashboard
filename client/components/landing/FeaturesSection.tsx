@@ -94,20 +94,20 @@ export default function FeaturesSection() {
             >
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-blue-500/20 to-red-500/15 opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100" />
 
-              <div className="relative h-full landing-glass-panel rounded-2xl p-8 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_28px_56px_-20px_rgba(15,23,42,0.18)]">
-                <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-red-600 bg-clip-text mb-5 tracking-tight">
+              <div className="relative z-0 h-full landing-glass-panel landing-hover-card rounded-2xl p-8 border border-slate-300">
+                <div className="relative z-10 text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-red-600 bg-clip-text mb-5 tracking-tight transition-transform duration-500 group-hover:scale-[1.03] origin-left">
                   {feature.number}
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400">
+                <h3 className="relative z-10 text-xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400">
                   {feature.title}
                 </h3>
 
-                <p className="text-slate-600 leading-relaxed mb-6 text-[0.95rem] md:text-base">
+                <p className="relative z-10 text-slate-600 leading-relaxed mb-6 text-[0.95rem] md:text-base">
                   {feature.desc}
                 </p>
 
-                <div className="h-0.5 w-12 rounded-full bg-gradient-to-r from-blue-600 to-red-600 group-hover:w-full transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                <div className="relative z-10 h-0.5 w-12 rounded-full bg-gradient-to-r from-blue-600 to-red-600 group-hover:w-full transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
               </div>
             </motion.div>
           ))}

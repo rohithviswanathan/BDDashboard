@@ -109,10 +109,10 @@ export default function PricingSection() {
                   transition: { duration: 0.7, ease: landingEase },
                 },
               }}
-              className={`relative rounded-2xl p-8 md:p-10 flex flex-col transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`group/plan relative z-0 rounded-2xl p-8 md:p-10 flex flex-col ${
                 plan.featured
-                  ? "bg-gradient-to-br from-blue-700 via-blue-600 to-red-600 text-white shadow-[0_24px_60px_-20px_rgba(37,99,235,0.45)] ring-1 ring-white/20"
-                  : "landing-glass-panel ring-slate-200/70 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-24px_rgba(15,23,42,0.14)]"
+                  ? "bg-gradient-to-br from-blue-700 via-blue-600 to-red-600 text-white shadow-[0_24px_60px_-20px_rgba(37,99,235,0.45)] ring-1 ring-white/20 transition-[transform,box-shadow,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_36px_70px_-22px_rgba(37,99,235,0.55)] hover:brightness-110"
+                  : "landing-glass-panel landing-hover-card ring-slate-200/70 border border-slate-300"
               }`}
             >
               {plan.featured && (
@@ -121,16 +121,18 @@ export default function PricingSection() {
                 </div>
               )}
 
-              <h3 className="text-2xl font-bold mb-2 tracking-tight">{plan.name}</h3>
+              <h3 className="relative z-10 text-2xl font-bold mb-2 tracking-tight transition-transform duration-300 group-hover/plan:translate-x-0.5">
+                {plan.name}
+              </h3>
               <p
-                className={`text-sm mb-6 leading-relaxed ${
+                className={`relative z-10 text-sm mb-6 leading-relaxed ${
                   plan.featured ? "text-blue-50/95" : "text-slate-600"
                 }`}
               >
                 {plan.description}
               </p>
 
-              <div className="mb-8">
+              <div className="relative z-10 mb-8">
                 <span className="text-4xl md:text-5xl font-black tracking-tight">
                   {plan.price}
                 </span>
@@ -143,7 +145,7 @@ export default function PricingSection() {
                 </span>
               </div>
 
-              <ul className="space-y-3.5 mb-8 flex-1">
+              <ul className="relative z-10 space-y-3.5 mb-8 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <span
@@ -176,7 +178,7 @@ export default function PricingSection() {
                   }
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className={`w-full py-3.5 rounded-xl font-bold text-base transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 active:translate-y-0 ${
+                className={`relative z-10 w-full py-3.5 rounded-xl font-bold text-base transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 active:scale-100 ${
                   plan.featured
                     ? "bg-white text-blue-700 hover:bg-slate-50 shadow-lg shadow-black/10"
                     : "bg-gradient-to-r from-blue-600 to-red-600 text-white hover:shadow-lg hover:shadow-blue-600/25"

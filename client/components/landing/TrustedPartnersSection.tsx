@@ -54,7 +54,7 @@ export default function TrustedPartnersSection() {
   const duplicatedPartners = [...PARTNERS, ...PARTNERS];
 
   return (
-    <section className="relative w-full py-24 md:py-28 overflow-hidden">
+    <section className="landing-section-bg relative w-full py-24 md:py-28 overflow-hidden">
       <div className="text-center mb-14 md:mb-16 px-4 max-w-3xl mx-auto">
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tight text-slate-900 mb-4">
           Our{" "}
@@ -83,9 +83,9 @@ export default function TrustedPartnersSection() {
               key={`${partner.id}-${index}`}
               className="flex-shrink-0 w-[min(100%,18rem)] sm:w-72 h-44 sm:h-48 group"
             >
-              <div className="w-full h-full flex items-center justify-center landing-glass-panel rounded-3xl transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_28px_48px_-24px_rgba(15,23,42,0.16)] ring-1 ring-slate-200/50">
+              <div className="w-full h-full flex items-center justify-center landing-glass-panel landing-hover-card rounded-3xl ring-1 ring-slate-200/50">
                 <div className="text-center space-y-3 md:space-y-4 px-5">
-                  <div className="w-[4.5rem] h-[4.5rem] md:w-24 md:h-24 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-red-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/20 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]">
+                  <div className="w-[4.5rem] h-[4.5rem] md:w-24 md:h-24 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-red-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/20 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:rotate-3">
                     {iconMap[partner.icon]}
                   </div>
                   <p className="text-sm md:text-base font-semibold text-slate-900 leading-snug tracking-tight">
