@@ -48,14 +48,14 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="landing-section-bg py-28 md:py-32 px-4 sm:px-6 lg:px-8"
+      className="py-28 md:py-32 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 lg:gap-16">
         <div className="space-y-8">
           <div>
             <div className="badge mb-6 shadow-sm">Get In Touch</div>
             <h2 className="text-4xl sm:text-5xl font-black mb-5 text-slate-900 tracking-tight">
-              Ready to Transform Your Sales?
+              Ready to Transform <span className="leading-[1.4]">Your Sales?</span>
             </h2>
             <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
               Join thousands of business development teams using Nexus to close
@@ -67,7 +67,7 @@ export default function ContactSection() {
             <button
               type="button"
               onClick={() => (window.location.href = "tel:+18558639873")}
-              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel ring-1 ring-slate-200/70 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-20px_rgba(37,99,235,0.2)] cursor-pointer group bg-gradient-to-br from-blue-50/80 to-white/60"
+              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-blue-50/80 to-white/60"
             >
               <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
               <div>
@@ -82,7 +82,7 @@ export default function ContactSection() {
               onClick={() =>
                 (window.location.href = "mailto:sales@nexusgrowth.io")
               }
-              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel ring-1 ring-slate-200/70 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-20px_rgba(220,38,38,0.15)] cursor-pointer group bg-gradient-to-br from-red-50/70 to-white/60"
+              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-red-50/70 to-white/60"
             >
               <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
               <div>
@@ -92,7 +92,7 @@ export default function ContactSection() {
                 </p>
               </div>
             </button>
-            <div className="flex gap-4 p-5 md:p-6 rounded-2xl landing-glass-panel ring-1 ring-slate-200/70 bg-gradient-to-br from-slate-50/90 via-white/70 to-blue-50/40">
+            <div className="flex gap-4 p-5 md:p-6 rounded-2xl landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 bg-gradient-to-br from-slate-50/90 via-white/70 to-blue-50/40">
               <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold text-slate-900">Headquarters</p>
@@ -105,7 +105,7 @@ export default function ContactSection() {
         </div>
 
         <div>
-          <div className="relative landing-glass-panel rounded-2xl p-8 md:p-10 ring-1 ring-slate-200/70 shadow-[0_24px_48px_-28px_rgba(15,23,42,0.12)] overflow-hidden">
+          <div className="relative z-0 landing-glass-panel landing-hover-card rounded-2xl p-8 md:p-10 ring-1 ring-slate-200/70 shadow-[0_24px_48px_-28px_rgba(15,23,42,0.12)] overflow-hidden bg-white/90 backdrop-blur-md">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-50/30 via-transparent to-red-50/25 pointer-events-none opacity-60" />
             <div className="relative">
               <h3 className="text-2xl md:text-3xl font-bold mb-8 text-slate-900 tracking-tight">
