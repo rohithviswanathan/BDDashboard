@@ -58,7 +58,7 @@ export default function TrustedPartnersSection() {
       <div className="text-center mb-14 md:mb-16 px-4 max-w-3xl mx-auto">
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tight text-slate-900 mb-4">
           Our{" "}
-          <span className="text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-red-600 bg-clip-text">
+          <span className="text-transparent bg-gradient-to-r from-black via-gray-700 to-gray-900 bg-clip-text">
             Trusted Partners
           </span>
         </h2>
@@ -85,7 +85,7 @@ export default function TrustedPartnersSection() {
             >
               <div className="w-full h-full flex items-center justify-center landing-glass-panel landing-hover-card rounded-3xl ring-1 ring-slate-200/50">
                 <div className="text-center space-y-3 md:space-y-4 px-5">
-                  <div className="w-[4.5rem] h-[4.5rem] md:w-24 md:h-24 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-red-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/20 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-[4.5rem] h-[4.5rem] md:w-24 md:h-24 mx-auto rounded-2xl bg-gradient-to-br from-black to-gray-600 flex items-center justify-center text-white shadow-lg shadow-black/20 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:rotate-3">
                     {iconMap[partner.icon]}
                   </div>
                   <p className="text-sm md:text-base font-semibold text-slate-900 leading-snug tracking-tight">

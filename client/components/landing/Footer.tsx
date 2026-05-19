@@ -4,14 +4,14 @@ export default function Footer() {
   return (
     <footer className="relative z-10 bg-gradient-to-b from-gray-950 via-gray-950 to-black text-gray-400 pt-0 pb-16 px-4 sm:px-6 lg:px-8">
       <div
-        className="h-px w-full mb-14 max-w-7xl mx-auto bg-[linear-gradient(90deg,transparent_0%,rgba(59,130,246,0.42)_42%,rgba(220,38,38,0.38)_58%,transparent_100%)]"
+        className="h-px w-full mb-14 max-w-7xl mx-auto bg-[linear-gradient(90deg,transparent_0%,rgba(100,100,100,0.42)_42%,rgba(80,80,80,0.38)_58%,transparent_100%)]"
         aria-hidden
       />
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="animate-fade-in-up">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-red-600 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <div className="w-8 h-8 bg-gradient-to-br from-black to-gray-600 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-white font-black text-lg cursor-pointer hover:opacity-80" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Nexus</h3>

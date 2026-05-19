@@ -26,7 +26,7 @@ export function LandingScrollChrome({ backgroundImageUrl }: LandingScrollChromeP
         className="fixed top-0 left-0 right-0 z-[100] h-[3px] origin-left pointer-events-none"
         style={{
           scaleX: smooth,
-          background: "linear-gradient(90deg, #2563eb, #1d4ed8, #dc2626)",
+          background: "linear-gradient(90deg, #000000, #1a1a1a, #333333)",
         }}
         aria-hidden
       />
@@ -52,7 +52,7 @@ export function LandingScrollChrome({ backgroundImageUrl }: LandingScrollChromeP
         aria-hidden
       >
         <div className="absolute inset-0 bg-gradient-to-br from-white/55 via-white/35 to-slate-100/45" />
-        <div className="absolute inset-0 bg-gradient-to-tl from-blue-600/[0.06] via-transparent to-red-600/[0.05]" />
+        <div className="absolute inset-0 bg-gradient-to-tl from-gray-600/[0.06] via-transparent to-gray-700/[0.05]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_80%_at_50%_-10%,rgba(255,255,255,0.55),transparent_55%)]" />
       </motion.div>
     </>

@@ -57,11 +57,11 @@ export default function InsightsSection() {
         >
           <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8">
             <div
-              className="hidden sm:block w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-600 via-blue-500 to-red-600 self-stretch min-h-[6.5rem]"
+              className="hidden sm:block w-1 shrink-0 rounded-full bg-gradient-to-b from-black via-gray-600 to-gray-800 self-stretch min-h-[6.5rem]"
               aria-hidden
             />
-            <div className="min-w-0 flex-1 border-l-4 border-blue-600/85 pl-4 sm:border-l-0 sm:pl-0">
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.28em] text-blue-700 mb-3 sm:mb-4">
+            <div className="min-w-0 flex-1 border-l-4 border-black/85 pl-4 sm:border-l-0 sm:pl-0">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.28em] text-black mb-3 sm:mb-4">
                 Latest thinking
               </p>
               <h2
@@ -69,7 +69,7 @@ export default function InsightsSection() {
                 className="text-3xl sm:text-4xl md:text-[2.65rem] font-black text-slate-900 tracking-tight text-balance leading-[1.12] mb-2"
               >
                 Ideas that help you see around corners —{" "}
-                <span className="leading-[1.4] insights-grad-motion text-transparent bg-gradient-to-r from-blue-600 via-red-600 to-blue-600 bg-clip-text">
+                <span className="leading-[1.4] insights-grad-motion text-transparent bg-gradient-to-r from-black via-gray-600 to-black bg-clip-text">
                   built for BD leaders
                 </span>
               </h2>
@@ -100,10 +100,10 @@ export default function InsightsSection() {
                 className="group/card shrink-0 w-[min(85vw,21rem)] sm:w-[24rem] md:w-[26rem] landing-glass-panel landing-hover-card rounded-2xl p-7 md:p-8 ring-1 ring-slate-200/60 flex flex-col justify-between min-h-[16.5rem] md:min-h-[17.5rem] cursor-default bg-white/95 backdrop-blur-md"
               >
                 <div className="relative z-10">
-                  <p className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-3 transition-colors duration-300 group-hover/card:text-blue-800">
+                  <p className="text-xs font-bold uppercase tracking-wider text-black mb-3 transition-colors duration-300 group-hover/card:text-gray-800">
                     {item.tag}
                   </p>
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 leading-snug mb-3 transition-colors duration-300 group-hover/card:text-blue-900">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 leading-snug mb-3 transition-colors duration-300 group-hover/card:text-black">
                     {item.title}
                   </h3>
                   <p className="text-slate-600 text-sm md:text-[0.95rem] leading-relaxed">
@@ -112,7 +112,7 @@ export default function InsightsSection() {
                 </div>
                 <button
                   type="button"
-                  className="relative z-10 mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-700 rounded-lg px-1 py-1 -mx-1 transition-[transform,color,gap] duration-300 hover:gap-3 hover:text-blue-800"
+                  className="relative z-10 mt-6 inline-flex items-center gap-2 text-sm font-bold text-black rounded-lg px-1 py-1 -mx-1 transition-[transform,color,gap] duration-300 hover:gap-3 hover:text-gray-800"
                   onClick={() =>
                     document.getElementById("contact")?.scrollIntoView({
                       behavior: "smooth",

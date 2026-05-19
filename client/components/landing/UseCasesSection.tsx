@@ -79,10 +79,10 @@ export default function UseCasesSection() {
               }}
               className="bg-white/95 backdrop-blur-md group relative z-0 overflow-hidden rounded-2xl p-8 landing-glass-panel landing-hover-card ring-1 ring-slate-200/60"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-transparent to-red-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50/40 via-transparent to-gray-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="relative z-10">
-                <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400 group-hover:translate-x-0.5">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 group-hover:text-black transition-colors duration-400 group-hover:translate-x-0.5">
                   {useCase.title}
                 </h3>
                 <p className="text-slate-600 mb-6 leading-relaxed">
@@ -92,9 +92,9 @@ export default function UseCasesSection() {
                   {useCase.stats.map((stat) => (
                     <div
                       key={stat}
-                      className="flex items-center gap-2 text-sm text-blue-700 font-semibold"
+                      className="flex items-center gap-2 text-sm text-black font-semibold"
                     >
-                      <span className="text-red-600" aria-hidden>
+                      <span className="text-gray-600" aria-hidden>
                         ✓
                       </span>
                       {stat}

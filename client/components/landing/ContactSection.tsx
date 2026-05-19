@@ -67,9 +67,9 @@ export default function ContactSection() {
             <button
               type="button"
               onClick={() => (window.location.href = "tel:+18558639873")}
-              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-blue-50/80 to-white/60"
+              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-gray-50/80 to-white/60"
             >
-              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
+              <Phone className="w-6 h-6 text-black flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
               <div>
                 <p className="font-bold text-slate-900">Phone</p>
                 <p className="text-slate-600 text-sm md:text-base">
@@ -82,9 +82,9 @@ export default function ContactSection() {
               onClick={() =>
                 (window.location.href = "mailto:sales@nexusgrowth.io")
               }
-              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-red-50/70 to-white/60"
+              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-gray-100/70 to-white/60"
             >
-              <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
+              <Mail className="w-6 h-6 text-gray-600 flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
               <div>
                 <p className="font-bold text-slate-900">Email</p>
                 <p className="text-slate-600 text-sm md:text-base">
@@ -92,8 +92,8 @@ export default function ContactSection() {
                 </p>
               </div>
             </button>
-            <div className="flex gap-4 p-5 md:p-6 rounded-2xl landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 bg-gradient-to-br from-slate-50/90 via-white/70 to-blue-50/40">
-              <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div className="flex gap-4 p-5 md:p-6 rounded-2xl landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 bg-gradient-to-br from-slate-50/90 via-white/70 to-gray-50/40">
+              <MapPin className="w-6 h-6 text-black flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold text-slate-900">Headquarters</p>
                 <p className="text-slate-600 text-sm md:text-base">
@@ -106,7 +106,7 @@ export default function ContactSection() {
 
         <div>
           <div className="relative z-0 landing-glass-panel landing-hover-card rounded-2xl p-8 md:p-10 ring-1 ring-slate-200/70 shadow-[0_24px_48px_-28px_rgba(15,23,42,0.12)] overflow-hidden bg-white/90 backdrop-blur-md">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-50/30 via-transparent to-red-50/25 pointer-events-none opacity-60" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-50/30 via-transparent to-gray-100/25 pointer-events-none opacity-60" />
             <div className="relative">
               <h3 className="text-2xl md:text-3xl font-bold mb-8 text-slate-900 tracking-tight">
                 Schedule a Demo
@@ -134,10 +134,10 @@ export default function ContactSection() {
                       }
                       value={formData[field]}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200/90 bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-400 font-medium transition-[border-color,box-shadow] duration-300 hover:border-slate-300"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200/90 bg-white/80 focus:outline-none focus:ring-2 focus:ring-black/30 focus:border-black font-medium transition-[border-color,box-shadow] duration-300 hover:border-slate-300"
                     />
                     {errors[field] && (
-                      <p className="text-red-600 text-sm mt-1.5">{errors[field]}</p>
+                      <p className="text-gray-600 text-sm mt-1.5">{errors[field]}</p>
                     )}
                   </div>
                 ))}
@@ -148,15 +148,15 @@ export default function ContactSection() {
                     rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200/90 bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-400 font-medium resize-none transition-[border-color,box-shadow] duration-300 hover:border-slate-300"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200/90 bg-white/80 focus:outline-none focus:ring-2 focus:ring-black/30 focus:border-black font-medium resize-none transition-[border-color,box-shadow] duration-300 hover:border-slate-300"
                   />
                   {errors.message && (
-                    <p className="text-red-600 text-sm mt-1.5">{errors.message}</p>
+                    <p className="text-gray-600 text-sm mt-1.5">{errors.message}</p>
                   )}
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-blue-600 to-red-600 shadow-lg shadow-blue-600/25 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/30 active:translate-y-0"
+                  className="w-full py-4 rounded-xl text-lg font-bold text-white bg-gradient-to-r from-black via-gray-700 to-gray-900 shadow-lg shadow-black/25 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30 active:translate-y-0"
                 >
                   Schedule Demo
                 </button>

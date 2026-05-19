@@ -111,12 +111,12 @@ export default function PricingSection() {
               }}
               className={`group/plan relative z-0 rounded-2xl p-8 md:p-10 flex flex-col ${
                 plan.featured
-                  ? "bg-gradient-to-br from-blue-700 via-blue-600 to-red-600 text-white shadow-[0_24px_60px_-20px_rgba(37,99,235,0.45)] ring-1 ring-white/20 transition-[transform,box-shadow,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_36px_70px_-22px_rgba(37,99,235,0.55)] hover:brightness-110"
+                  ? "bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 text-white shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)] ring-1 ring-white/20 transition-[transform,box-shadow,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_36px_70px_-22px_rgba(0,0,0,0.55)] hover:brightness-110"
                   : "landing-glass-panel landing-hover-card ring-slate-200/70 border border-slate-300"
               }`}
             >
               {plan.featured && (
-                <div className="absolute -top-3 right-6 rounded-full bg-white/95 text-blue-700 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest shadow-md">
+                <div className="absolute -top-3 right-6 rounded-full bg-white/95 text-gray-800 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest shadow-md">
                   Most Popular
                 </div>
               )}
@@ -126,7 +126,7 @@ export default function PricingSection() {
               </h3>
               <p
                 className={`relative z-10 text-sm mb-6 leading-relaxed ${
-                  plan.featured ? "text-blue-50/95" : "text-slate-600"
+                  plan.featured ? "text-gray-100/95" : "text-slate-600"
                 }`}
               >
                 {plan.description}
@@ -138,7 +138,7 @@ export default function PricingSection() {
                 </span>
                 <span
                   className={`${
-                    plan.featured ? "text-blue-100/90" : "text-slate-500"
+                    plan.featured ? "text-gray-300/90" : "text-slate-500"
                   } text-sm font-medium ml-1`}
                 >
                   {plan.period}
@@ -150,7 +150,7 @@ export default function PricingSection() {
                   <li key={feature} className="flex items-start gap-3">
                     <span
                       className={`mt-0.5 text-lg leading-none ${
-                        plan.featured ? "text-amber-200" : "text-blue-600"
+                        plan.featured ? "text-gray-300" : "text-black"
                       }`}
                       aria-hidden
                     >
@@ -158,7 +158,7 @@ export default function PricingSection() {
                     </span>
                     <span
                       className={
-                        plan.featured ? "text-blue-50/95" : "text-slate-700"
+                        plan.featured ? "text-gray-100/95" : "text-slate-700"
                       }
                     >
                       {feature}
@@ -180,8 +180,8 @@ export default function PricingSection() {
                 }}
                 className={`relative z-10 w-full py-3.5 rounded-xl font-bold text-base transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 active:scale-100 ${
                   plan.featured
-                    ? "bg-white text-blue-700 hover:bg-slate-50 shadow-lg shadow-black/10"
-                    : "bg-gradient-to-r from-blue-600 to-red-600 text-white hover:shadow-lg hover:shadow-blue-600/25"
+                    ? "bg-white text-gray-800 hover:bg-slate-50 shadow-lg shadow-black/10"
+                    : "bg-gradient-to-r from-black to-gray-700 text-white hover:shadow-lg hover:shadow-black/25"
                 }`}
               >
                 {plan.cta}

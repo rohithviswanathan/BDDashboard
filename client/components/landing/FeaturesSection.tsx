@@ -92,14 +92,14 @@ export default function FeaturesSection() {
               }}
               className="group relative"
             >
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-blue-500/20 to-red-500/15 opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100" />
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-black/20 to-gray-600/15 opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100" />
 
               <div className="relative z-0 h-full landing-glass-panel landing-hover-card rounded-2xl p-8 border border-slate-300">
-                <div className="relative z-10 text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-red-600 bg-clip-text mb-5 tracking-tight transition-transform duration-500 group-hover:scale-[1.03] origin-left">
+                <div className="relative z-10 text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-black via-gray-700 to-gray-900 bg-clip-text mb-5 tracking-tight transition-transform duration-500 group-hover:scale-[1.03] origin-left">
                   {feature.number}
                 </div>
 
-                <h3 className="relative z-10 text-xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400">
+                <h3 className="relative z-10 text-xl font-bold mb-3 text-slate-900 group-hover:text-black transition-colors duration-400">
                   {feature.title}
                 </h3>
 
@@ -107,7 +107,7 @@ export default function FeaturesSection() {
                   {feature.desc}
                 </p>
 
-                <div className="relative z-10 h-0.5 w-12 rounded-full bg-gradient-to-r from-blue-600 to-red-600 group-hover:w-full transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                <div className="relative z-10 h-0.5 w-12 rounded-full bg-gradient-to-r from-black to-gray-600 group-hover:w-full transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
               </div>
             </motion.div>
           ))}
