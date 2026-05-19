@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
@@ -10,88 +7,64 @@ import ContactSection from "@/components/landing/ContactSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
 import TrustedPartnersSection from "@/components/landing/TrustedPartnersSection";
+import InsightsSection from "@/components/landing/InsightsSection";
+import { Reveal } from "@/components/landing/Reveal";
+import { LandingScrollChrome } from "@/components/landing/LandingScrollChrome";
+import { ScrollLazySection } from "@/components/landing/ScrollLazySection";
 import bg_image from "@/assets/jpg/bg_image.jpg";
-
-function ScrollReveal({ children, delay = 0 }) {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          (entry.target as HTMLElement).style.animation = `fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}ms forwards`;
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [delay]);
-
-  return (
-    <div ref={ref} style={{ opacity: 0, willChange: "opacity, transform" }}>
-      {children}
-    </div>
-  );
-}
 
 export default function Index() {
   return (
     <div className="relative min-h-screen">
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      <LandingScrollChrome backgroundImageUrl={bg_image} />
 
       <Header />
 
-      <div
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat w-screen h-screen"
-        style={{
-          backgroundImage: `url('${bg_image}')`,
-          zIndex: 0,
-          backgroundAttachment: "fixed",
-          top: "var(--header-height, 65px)",
-        }}
-      />
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+      `}</style>
 
-      <div className="fixed inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.4)] z-10 pointer-events-none" style={{ top: "var(--header-height, 65px)" }} />
-
-      <div className="relative z-20">
-        <ScrollReveal delay={0}>
+      <div className="relative z-20 motion-safe:animate-[fadeIn_0.8s_ease-out_both]">
+        <Reveal y={18} variant="fadeUp" amount={0.2}>
           <HeroSection />
-        </ScrollReveal>
-        <ScrollReveal delay={100}>
+        </Reveal>
+
+        <Reveal variant="clip" y={24} amount={0.08}>
           <FeaturesSection />
-        </ScrollReveal>
-        <ScrollReveal delay={100}>
-          <TrustedPartnersSection />
-        </ScrollReveal>
-        <ScrollReveal delay={100}>
-          <UseCasesSection />
-        </ScrollReveal>
-        <ScrollReveal delay={100}>
+        </Reveal>
+
+        <ScrollLazySection>
+          <Reveal variant="fadeRight" amount={0.15}>
+            <InsightsSection />
+          </Reveal>
+        </ScrollLazySection>
+
+        <ScrollLazySection>
+          <Reveal variant="fadeUp" y={28} amount={0.1}>
+            <TrustedPartnersSection />
+          </Reveal>
+        </ScrollLazySection>
+
+        <ScrollLazySection>
+          <Reveal variant="fadeLeft" amount={0.1}>
+            <UseCasesSection />
+          </Reveal>
+        </ScrollLazySection>
+
+        <Reveal variant="zoom" amount={0.12}>
           <PricingSection />
-        </ScrollReveal>
-        <ScrollReveal delay={100}>
+        </Reveal>
+
+        <Reveal variant="fadeUp" y={26} amount={0.08}>
           <ContactSection />
-        </ScrollReveal>
-        <ScrollReveal delay={100}>
+        </Reveal>
+
+        <Reveal variant="clip" y={20} amount={0.25}>
           <CTASection />
-        </ScrollReveal>
+        </Reveal>
       </div>
 
       <Footer />

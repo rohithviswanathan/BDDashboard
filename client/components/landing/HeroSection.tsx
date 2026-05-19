@@ -1,142 +1,251 @@
+import { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import { landingEase } from "@/components/landing/Reveal";
+import { AnimatedCounter } from "@/components/landing/AnimatedCounter";
 
 export default function HeroSection() {
+  const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const leftY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 56]);
+  const rightY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 22]);
+  const heroOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.92],
+    [1, reduce ? 1 : 0.35]
+  );
+
   return (
-    <section id="hero" className="relative py-20 md:pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10 -mt-8">
-        <div className="space-y-8 animate-slide-in-left">
-          {/* Badge */}
+    <section
+      ref={sectionRef}
+      id="hero"
+      className="relative py-24 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-20 items-center relative z-10 md:-mt-4">
+        <motion.div className="space-y-8" style={{ y: leftY, opacity: heroOpacity }}>
           <div className="inline-block">
-            <div className="badge">
-              Complete Sales Intelligence
-            </div>
+            <div className="badge shadow-sm">Complete Sales Intelligence</div>
           </div>
 
-          {/* Main Heading */}
-          <h2 className="text-6xl md:text-7xl font-black leading-tight text-slate-900 drop-shadow-sm">
+          <h2 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-slate-900">
             Drive Business{" "}
-            <span className="text-transparent bg-gradient-to-r from-blue-600 via-red-600 to-blue-600 bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-red-600 bg-clip-text">
               Growth with Data
             </span>
           </h2>
 
-          {/* Subheading */}
-          <p className="text-xl text-slate-900 leading-relaxed max-w-lg font-semibold drop-shadow-lg bg-white/40 backdrop-blur-sm p-6 rounded-lg border border-white/60">
+          <p className="landing-glass-panel text-lg md:text-xl text-slate-800 leading-relaxed max-w-lg font-medium p-6 md:p-7 transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-xl hover:ring-1 hover:ring-blue-200/40">
             Nexus is the all-in-one dashboard for business development teams.
             Track leads, manage pipelines, analyze performance, and close more
             deals with powerful insights.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-            {/* Primary Button */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <button
+              type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="relative px-8 py-4 font-bold text-white text-lg rounded-xl overflow-hidden group transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+              className="relative px-8 py-4 font-bold text-white text-base md:text-lg rounded-2xl overflow-hidden group shadow-lg shadow-blue-600/25 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-600/35 active:translate-y-0 active:scale-100"
               style={{
-                background: "linear-gradient(135deg, #3b82f6 0%, #ef4444 100%)",
+                background:
+                  "linear-gradient(135deg, #2563eb 0%, #1d4ed8 42%, #dc2626 100%)",
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center justify-center gap-2">
+              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative flex items-center justify-center gap-2">
                 Start Free Trial
-                <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
+                <ChevronRight
+                  size={20}
+                  className="transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+                />
+              </span>
             </button>
 
-            {/* Secondary Button */}
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="relative px-8 py-4 font-bold text-slate-900 text-lg rounded-xl overflow-hidden group transition-all duration-300 hover:scale-105 active:scale-95 bg-white shadow-md hover:shadow-lg border border-slate-200"
+              type="button"
+              onClick={() =>
+                document.getElementById("insights")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              className="relative px-8 py-4 font-bold text-slate-900 text-base md:text-lg rounded-2xl overflow-hidden group transition-[transform,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] landing-glass-panel hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/90 hover:shadow-xl active:translate-y-0 active:scale-100"
             >
-              <div className="absolute inset-0 bg-slate-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center justify-center gap-2">
+              <span className="absolute inset-0 bg-gradient-to-r from-slate-100/0 via-slate-200/40 to-slate-100/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative flex items-center justify-center gap-2">
                 ▶ Watch Demo
-              </div>
+              </span>
             </button>
           </div>
 
-          {/* Stats Section */}
-          <div className="flex items-center gap-6 text-sm text-slate-700 pt-6 bg-white/80 p-6 rounded-xl border border-slate-200 backdrop-blur-sm max-w-sm animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
-            <div className="animate-bounce-up hover:scale-110 transition-all" style={{ animationDelay: "0s" }}>
-              <p className="font-black text-2xl text-slate-900">10K+</p>
-              <p className="text-slate-600 text-sm">Active Users</p>
-            </div>
-            <div className="w-px h-12 bg-gradient-to-b from-slate-300 to-transparent"></div>
-            <div className="animate-bounce-up hover:scale-110 transition-all" style={{ animationDelay: "0.1s" }}>
-              <p className="font-black text-2xl text-slate-900">99.9%</p>
-              <p className="text-slate-600 text-sm">Uptime SLA</p>
-            </div>
-            <div className="w-px h-12 bg-gradient-to-b from-slate-300 to-transparent"></div>
-            <div className="animate-bounce-up hover:scale-110 transition-all" style={{ animationDelay: "0.2s" }}>
-              <p className="font-black text-2xl text-slate-900">24/7</p>
-              <p className="text-slate-600 text-sm">Support</p>
-            </div>
+          <div className="landing-glass-panel flex flex-wrap items-stretch gap-6 sm:gap-8 text-sm text-slate-700 p-6 max-w-lg transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-xl hover:ring-1 hover:ring-slate-200/80">
+            {[
+              {
+                value: (
+                  <AnimatedCounter
+                    end={10}
+                    suffix="K+"
+                    className="font-black text-2xl text-slate-900 tracking-tight tabular-nums"
+                  />
+                ),
+                sub: "Active Users",
+              },
+              {
+                value: (
+                  <AnimatedCounter
+                    end={99.9}
+                    decimals={1}
+                    suffix="%"
+                    className="font-black text-2xl text-slate-900 tracking-tight tabular-nums"
+                  />
+                ),
+                sub: "Uptime SLA",
+              },
+              {
+                value: (
+                  <span className="font-black text-2xl text-slate-900 tracking-tight tabular-nums">
+                    <AnimatedCounter end={24} className="inline" />
+                    /7
+                  </span>
+                ),
+                sub: "Support",
+              },
+            ].map((s, i) => (
+              <div
+                key={s.sub}
+                className={`flex items-center gap-6 sm:gap-8 ${i > 0 ? "sm:border-l sm:border-slate-200/80 sm:pl-8" : ""}`}
+              >
+                <div className="transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5">
+                  <div className="text-slate-900">{s.value}</div>
+                  <p className="text-slate-600 text-sm font-medium">{s.sub}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
-       {/* Right Side - Dashboard Card */}
-        <div className="animate-slide-in-right">
-          <div className="relative group animate-float">
-            <div className="absolute -inset-1 bg-gradient-to-br from-blue-400 to-red-400 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 animate-pulse"></div>
+        <motion.div className="relative" style={{ y: rightY, opacity: heroOpacity }}>
+          <motion.div
+            initial={false}
+            animate={
+              reduce
+                ? undefined
+                : {
+                    y: [0, -7, 0],
+                  }
+            }
+            transition={
+              reduce
+                ? undefined
+                : {
+                    duration: 7,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }
+            }
+          >
+            <div className="relative group">
+              <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-blue-500/25 via-white/40 to-red-500/20 blur-2xl opacity-70 group-hover:opacity-90 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
 
-            {/* Dashboard Card */}
-            <div className="relative bg-white rounded-3xl p-8 border border-slate-200 shadow-xl overflow-hidden">
-              {/* Mock Dashboard */}
-              <div className="space-y-6">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-slate-900 font-bold text-lg">Sales Pipeline</h3>
-                  <div className="flex gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDuration: "2s" }}></div>
-                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{ animationDuration: "2s", animationDelay: "0.4s" }}></div>
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDuration: "2s", animationDelay: "0.8s" }}></div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-slate-600 font-medium">Negotiation</span>
-                      <span className="text-blue-600 font-bold">$450K</span>
-                    </div>
-                    <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                      <div className="bg-blue-500 h-2 rounded-full w-3/4 animate-pulse" style={{ animationDuration: "3s" }}></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-slate-600 font-medium">Proposal</span>
-                      <span className="text-red-600 font-bold">$320K</span>
-                    </div>
-                    <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                      <div className="bg-red-500 h-2 rounded-full w-1/2 animate-pulse" style={{ animationDuration: "3s", animationDelay: "0.5s" }}></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-slate-600 font-medium">Discovery</span>
-                      <span className="text-green-600 font-bold">$280K</span>
-                    </div>
-                    <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                      <div className="bg-green-500 h-2 rounded-full w-2/3 animate-pulse" style={{ animationDuration: "3s", animationDelay: "1s" }}></div>
+              <div className="group/preview relative z-0 landing-glass-panel landing-hover-card rounded-3xl p-8 md:p-9 overflow-hidden ring-1 ring-slate-200/40">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-red-50/40 pointer-events-none transition-opacity duration-500 group-hover/preview:opacity-100 opacity-90" />
+              <div className="relative z-10 space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-slate-900 font-bold text-lg tracking-tight">
+                      Sales Pipeline
+                    </h3>
+                    <div className="flex gap-2">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 motion-safe:animate-pulse" />
+                      <span
+                        className="w-2 h-2 rounded-full bg-red-500 motion-safe:animate-pulse"
+                        style={{ animationDelay: "0.35s" }}
+                      />
+                      <span
+                        className="w-2 h-2 rounded-full bg-emerald-500 motion-safe:animate-pulse"
+                        style={{ animationDelay: "0.7s" }}
+                      />
                     </div>
                   </div>
-                </div>
 
-                <div className="pt-4 border-t border-slate-200">
-                  <div className="flex justify-between">
-                    <span className="text-slate-500 text-sm">Total Pipeline</span>
-                    <span className="text-slate-900 font-black text-lg animate-pulse" style={{ animationDuration: "2s" }}>
-                      $1.05M
-                    </span>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        stage: "Negotiation",
+                        amt: "$450K",
+                        pct: "75%",
+                        bar: "bg-blue-500",
+                      },
+                      {
+                        stage: "Proposal",
+                        amt: "$320K",
+                        pct: "50%",
+                        bar: "bg-red-500",
+                      },
+                      {
+                        stage: "Discovery",
+                        amt: "$280K",
+                        pct: "66%",
+                        bar: "bg-emerald-500",
+                      },
+                    ].map((row, i) => (
+                      <div key={row.stage}>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="text-slate-600 font-medium">
+                            {row.stage}
+                          </span>
+                          <span
+                            className={`font-bold ${
+                              row.bar.includes("blue")
+                                ? "text-blue-600"
+                                : row.bar.includes("red")
+                                  ? "text-red-600"
+                                  : "text-emerald-600"
+                            }`}
+                          >
+                            {row.amt}
+                          </span>
+                        </div>
+                        <div className="w-full bg-slate-200/90 rounded-full h-2 overflow-hidden">
+                          <motion.div
+                            className={`h-2 rounded-full ${row.bar}`}
+                            initial={{ width: reduce ? row.pct : "0%" }}
+                            whileInView={{ width: row.pct }}
+                            viewport={{ once: true }}
+                            transition={{
+                              duration: 1.05,
+                              delay: 0.12 + i * 0.08,
+                              ease: landingEase,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-200/80">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-slate-500 text-sm font-medium">
+                        Total Pipeline
+                      </span>
+                      <span className="text-slate-900 font-black text-lg tracking-tight">
+                        $1.05M
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

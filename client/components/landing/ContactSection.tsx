@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactSection() {
@@ -13,7 +13,7 @@ export default function ContactSection() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -33,7 +33,7 @@ export default function ContactSection() {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
@@ -46,102 +46,122 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-        <div className="space-y-8 animate-slide-in-left">
+    <section
+      id="contact"
+      className="py-28 md:py-32 px-4 sm:px-6 lg:px-8"
+    >
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 lg:gap-16">
+        <div className="space-y-8">
           <div>
-            <div className="badge mb-6">Get In Touch</div>
-            <h2 className="text-5xl font-black mb-6 text-gray-900">
-              Ready to Transform Your Sales?
+            <div className="badge mb-6 shadow-sm">Get In Touch</div>
+            <h2 className="text-4xl sm:text-5xl font-black mb-5 text-slate-900 tracking-tight">
+              Ready to Transform <span className="leading-[1.4]">Your Sales?</span>
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Join thousands of business development teams using Nexus to
-              close more deals faster. Schedule a demo with our team today.
+            <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
+              Join thousands of business development teams using Nexus to close
+              more deals faster. Schedule a demo with our team today.
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             <button
-              onClick={() => window.location.href = "tel:+18558639873"}
-              className="w-full flex gap-4 p-6 bg-blue-50 rounded-xl border border-blue-200 animate-bounce-up hover:bg-blue-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              type="button"
+              onClick={() => (window.location.href = "tel:+18558639873")}
+              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-blue-50/80 to-white/60"
             >
-              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
-              <div className="text-left">
-                <p className="font-bold text-gray-900">Phone</p>
-                <p className="text-gray-600">+1 (855) NEXUS-BD</p>
-              </div>
-            </button>
-            <button
-              onClick={() => window.location.href = "mailto:sales@nexusgrowth.io"}
-              className="w-full flex gap-4 p-6 bg-red-50 rounded-xl border border-red-200 animate-bounce-up hover:bg-red-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
-              style={{ animationDelay: "0.1s" }}
-            >
-              <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
-              <div className="text-left">
-                <p className="font-bold text-gray-900">Email</p>
-                <p className="text-gray-600">sales@nexusgrowth.io</p>
-              </div>
-            </button>
-            <div className="flex gap-4 p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-xl border border-blue-200 animate-bounce-up" style={{ animationDelay: "0.2s" }}>
-              <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
               <div>
-                <p className="font-bold text-gray-900">Headquarters</p>
-                <p className="text-gray-600">San Francisco, CA</p>
+                <p className="font-bold text-slate-900">Phone</p>
+                <p className="text-slate-600 text-sm md:text-base">
+                  +1 (855) NEXUS-BD
+                </p>
+              </div>
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                (window.location.href = "mailto:sales@nexusgrowth.io")
+              }
+              className="w-full flex gap-4 p-5 md:p-6 rounded-2xl text-left landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 cursor-pointer group bg-gradient-to-br from-red-50/70 to-white/60"
+            >
+              <Mail className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5 transition-transform duration-500 group-hover:scale-105" />
+              <div>
+                <p className="font-bold text-slate-900">Email</p>
+                <p className="text-slate-600 text-sm md:text-base">
+                  sales@nexusgrowth.io
+                </p>
+              </div>
+            </button>
+            <div className="flex gap-4 p-5 md:p-6 rounded-2xl landing-glass-panel landing-hover-card ring-1 ring-slate-200/70 bg-gradient-to-br from-slate-50/90 via-white/70 to-blue-50/40">
+              <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold text-slate-900">Headquarters</p>
+                <p className="text-slate-600 text-sm md:text-base">
+                  San Francisco, CA
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right side form */}
-        <div className="animate-slide-in-right">
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-10 border border-gray-200 shadow-xl">
-            <h3 className="text-3xl font-bold mb-8 text-gray-900">
-              Schedule a Demo
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {["name", "email", "phone", "company"].map((field) => (
-                <div key={field}>
-                  <input
-                    type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
-                    name={field}
-                    placeholder={
-                      field === "name"
-                        ? "Your Name"
-                        : field === "email"
-                        ? "Work Email"
-                        : field === "phone"
-                        ? "Phone Number"
-                        : "Company Name"
-                    }
-                    value={(formData as any)[field]}
+        <div>
+          <div className="relative z-0 landing-glass-panel landing-hover-card rounded-2xl p-8 md:p-10 ring-1 ring-slate-200/70 shadow-[0_24px_48px_-28px_rgba(15,23,42,0.12)] overflow-hidden bg-white/90 backdrop-blur-md">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-50/30 via-transparent to-red-50/25 pointer-events-none opacity-60" />
+            <div className="relative">
+              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-slate-900 tracking-tight">
+                Schedule a Demo
+              </h3>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {(["name", "email", "phone", "company"] as const).map((field) => (
+                  <div key={field}>
+                    <input
+                      type={
+                        field === "email"
+                          ? "email"
+                          : field === "phone"
+                            ? "tel"
+                            : "text"
+                      }
+                      name={field}
+                      placeholder={
+                        field === "name"
+                          ? "Your Name"
+                          : field === "email"
+                            ? "Work Email"
+                            : field === "phone"
+                              ? "Phone Number"
+                              : "Company Name"
+                      }
+                      value={formData[field]}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200/90 bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-400 font-medium transition-[border-color,box-shadow] duration-300 hover:border-slate-300"
+                    />
+                    {errors[field] && (
+                      <p className="text-red-600 text-sm mt-1.5">{errors[field]}</p>
+                    )}
+                  </div>
+                ))}
+                <div>
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your team..."
+                    rows={4}
+                    value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium transition-all hover:border-blue-300"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200/90 bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-400 font-medium resize-none transition-[border-color,box-shadow] duration-300 hover:border-slate-300"
                   />
-                  {errors[field] && (
-                    <p className="text-red-500 text-sm mt-1">{errors[field]}</p>
+                  {errors.message && (
+                    <p className="text-red-600 text-sm mt-1.5">{errors.message}</p>
                   )}
                 </div>
-              ))}
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Tell us about your team..."
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent font-medium resize-none transition-all hover:border-blue-300"
-                />
-                {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-                )}
-              </div>
-              <button
-                type="submit"
-                className="btn-primary w-full text-lg py-4 hover:scale-105 transition-transform"
-              >
-                Schedule Demo
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full py-4 rounded-xl text-lg font-bold text-white bg-gradient-to-r from-blue-600 via-blue-600 to-red-600 shadow-lg shadow-blue-600/25 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/30 active:translate-y-0"
+                >
+                  Schedule Demo
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

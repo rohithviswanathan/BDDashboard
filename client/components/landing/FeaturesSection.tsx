@@ -1,4 +1,9 @@
+import { motion, useReducedMotion } from "framer-motion";
+import { landingEase } from "@/components/landing/Reveal";
+
 export default function FeaturesSection() {
+  const reduce = useReducedMotion();
+
   const features = [
     {
       number: "01",
@@ -32,75 +37,82 @@ export default function FeaturesSection() {
     },
   ];
 
+  const container = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: reduce ? 0 : 0.07, delayChildren: 0.06 },
+    },
+  };
+
   return (
-    <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <section
+      id="features"
+      className="landing-section-bg py-28 md:py-32 px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20 animate-fade-in-up">
-          <div className="badge mb-6 justify-center">
-            Powerful Features
-          </div>
-          <h2 className="text-5xl md:text-6xl font-black mb-6 text-slate-900">
+        <motion.div
+          className="text-center mb-16 md:mb-20 max-w-3xl mx-auto"
+          initial={reduce ? false : { opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: landingEase }}
+        >
+          <div className="badge mb-6 justify-center shadow-sm">Powerful Features</div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-5 text-slate-900 tracking-tight">
             Everything You Need
           </h2>
-          <p className="text-xl text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Build, manage, and scale your business development operations with our comprehensive platform
+          <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
+            Build, manage, and scale your business development operations with
+            our comprehensive platform
           </p>
-        </div>
+        </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08 }}
+        >
           {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="group relative"
-              style={{
-                animation: `slideUp 0.6s ease-out forwards`,
-                animationDelay: `${idx * 80}ms`,
+            <motion.div
+              key={feature.number}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 24,
+                  x: reduce ? 0 : idx % 2 === 0 ? -36 : 36,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  x: 0,
+                  transition: { duration: 0.64, ease: landingEase },
+                },
               }}
+              className="group relative"
             >
-              {/* Glow background on hover */}
-              <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-500/20 to-red-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-blue-500/20 to-red-500/15 opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100" />
 
-              {/* Card */}
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/60 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
-                {/* Number */}
-                <div className="text-6xl font-black text-transparent bg-gradient-to-r from-blue-600 via-red-600 to-blue-600 bg-clip-text mb-6 group-hover:scale-105 transition-transform duration-500">
+              <div className="relative z-0 h-full landing-glass-panel landing-hover-card rounded-2xl p-8 border border-slate-300">
+                <div className="relative z-10 text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-red-600 bg-clip-text mb-5 tracking-tight transition-transform duration-500 group-hover:scale-[1.03] origin-left">
                   {feature.number}
                 </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="relative z-10 text-xl font-bold mb-3 text-slate-900 group-hover:text-blue-700 transition-colors duration-400">
                   {feature.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-slate-700 leading-relaxed mb-6">
+                <p className="relative z-10 text-slate-600 leading-relaxed mb-6 text-[0.95rem] md:text-base">
                   {feature.desc}
                 </p>
 
-                {/* Animated underline */}
-                <div className="flex items-center gap-3">
-                  <div className="h-1 w-12 bg-gradient-to-r from-blue-600 to-red-600 rounded-full group-hover:w-full transition-all duration-500"></div>
-                </div>
+                <div className="relative z-10 h-0.5 w-12 rounded-full bg-gradient-to-r from-blue-600 to-red-600 group-hover:w-full transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-
-      <style>{`
-        @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </section>
   );
 }
